@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ description | default('Bizot Paysagistes - Plus de 40 ans d\'expertise en aménagement paysager, entretien de jardins et espaces verts en Île-de-France.') }}">
+    <meta name="keywords" content="{{ keywords | default('paysagiste, entretien jardin, aménagement paysager, espaces verts, Essonne, Île-de-France') }}">
+    <meta name="author" content="Bizot Paysagistes">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="{{ title | default('Bizot Paysagistes') }}">
+    <meta property="og:description" content="{{ description | default('Conception, réalisation et entretien d\'espaces verts en Île-de-France.') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bizot-paysagistes.com{{ page.url }}">
+    <meta property="og:image" content="https://www.bizot-paysagistes.com/assets/thumbnail.png">
+    
+    <title>{{ title | default('Bizot Paysagistes') }}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/logo-bizot-paysagistes.png">
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#80ab97',
+                        brandLight: '#cbecdd',
+                        brandDark: '#386D56',
+                        accent: '#F97316',
+                        bgColor: '#FFFFFF',
+                        textColor: '#102611'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        {% block styles %}{% endblock %}
+    </style>
+</head>
+<body class="font-sans antialiased text-textColor bg-bgColor">
+
+    {% include "header.njk" %}
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    {% include "footer.njk" %}
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- AOS JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out'
+        });
+        {% block scripts %}{% endblock %}
+    </script>
+
+</body>
+</html>
